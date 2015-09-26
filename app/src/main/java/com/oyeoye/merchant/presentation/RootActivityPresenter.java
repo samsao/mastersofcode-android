@@ -32,6 +32,10 @@ public class RootActivityPresenter extends Presenter<RootActivityPresenter.Activ
         return BundleService.getBundleService(activity.getContext());
     }
 
+    public RootActivity getActivity() {
+        return (RootActivity) getView();
+    }
+
 
     public void setupToolbar(Toolbar toolbar) {
         if (toolbar != null) {
