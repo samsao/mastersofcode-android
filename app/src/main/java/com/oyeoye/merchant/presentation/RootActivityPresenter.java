@@ -1,4 +1,4 @@
-package com.samsao.projecttemplate.presentation;
+package com.oyeoye.merchant.presentation;
 
 import android.content.Context;
 import android.support.v7.app.ActionBar;
@@ -7,8 +7,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.samsao.projecttemplate.DaggerScope;
-import com.samsao.projecttemplate.RootActivity;
+import com.oyeoye.merchant.DaggerScope;
+import com.oyeoye.merchant.RootActivity;
 
 import javax.inject.Inject;
 

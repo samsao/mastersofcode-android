@@ -1,4 +1,4 @@
-package com.samsao.projecttemplate;
+package com.oyeoye.merchant;
 
 import javax.inject.Scope;
 

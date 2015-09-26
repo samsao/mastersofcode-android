@@ -1,4 +1,4 @@
-package com.samsao.projecttemplate.presentation.main;
+package com.oyeoye.merchant.presentation.main;
 
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
@@ -6,12 +6,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.samsao.projecttemplate.AppDependencies;
-import com.samsao.projecttemplate.DaggerScope;
-import com.samsao.projecttemplate.RootActivity;
-import com.samsao.projecttemplate.presentation.AbstractPresenter;
-import com.samsao.projecttemplate.presentation.RootActivityPresenter;
-import com.samsao.projecttemplate.presentation.SetupToolbarHandler;
+import com.oyeoye.merchant.AppDependencies;
+import com.oyeoye.merchant.DaggerScope;
+import com.oyeoye.merchant.RootActivity;
+import com.oyeoye.merchant.presentation.AbstractPresenter;
+import com.oyeoye.merchant.presentation.RootActivityPresenter;
+import com.oyeoye.merchant.presentation.SetupToolbarHandler;
 
 import architect.robot.AutoStackable;
 import autodagger.AutoComponent;

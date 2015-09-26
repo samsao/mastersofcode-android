@@ -1,4 +1,4 @@
-package com.samsao.projecttemplate;
+package com.oyeoye.merchant;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,8 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.samsao.projecttemplate.presentation.RootActivityPresenter;
-import com.samsao.projecttemplate.presentation.main.stackable.MainStackable;
+import com.oyeoye.merchant.presentation.RootActivityPresenter;
+import com.oyeoye.merchant.presentation.main.stackable.MainStackable;
 
 import javax.inject.Inject;
 

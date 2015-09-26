@@ -1,4 +1,4 @@
-package com.samsao.projecttemplate.presentation;
+package com.oyeoye.merchant.presentation;
 
 import android.content.Context;
 import android.content.res.Resources;

@@ -1,10 +1,10 @@
-package com.samsao.projecttemplate.presentation.base;
+package com.oyeoye.merchant.presentation.base;
 
 import android.animation.AnimatorSet;
 import android.content.Context;
 import android.util.AttributeSet;
 
-import com.samsao.projecttemplate.presentation.AbstractPresenter;
+import com.oyeoye.merchant.presentation.AbstractPresenter;
 
 import architect.view.HandlesBack;
 import architect.view.HandlesViewTransition;

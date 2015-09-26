@@ -1,14 +1,9 @@
-package com.samsao.projecttemplate;
+package com.oyeoye.merchant;
 
 import android.app.Application;
 
-import com.crashlytics.android.Crashlytics;
-import com.samsao.projecttemplate.business.managers.PreferenceManager;
-
 import architect.robot.DaggerService;
 import autodagger.AutoComponent;
-import dagger.Provides;
-import io.fabric.sdk.android.Fabric;
 import mortar.MortarScope;
 import timber.log.Timber;
 
@@ -35,8 +30,6 @@ public class MainApplication extends Application {
 
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
-        } else {
-            Fabric.with(this, new Crashlytics());
         }
 
         MainApplicationComponent component = DaggerMainApplicationComponent.builder().module(new Module()).build();
@@ -49,15 +42,15 @@ public class MainApplication extends Application {
     @dagger.Module
     public class Module {
 
-        /**
-         * provide the preference manager to the whole app
-         *
-         * @return PreferenceManager
-         */
-        @Provides
-        @DaggerScope(MainApplication.class)
-        public PreferenceManager providesPreferenceManager() {
-            return new PreferenceManager(getApplicationContext());
-        }
+//        /**
+//         * provide the preference manager to the whole app
+//         *
+//         * @return PreferenceManager
+//         */
+//        @Provides
+//        @DaggerScope(MainApplication.class)
+//        public PreferenceManager providesPreferenceManager() {
+//            return new PreferenceManager(getApplicationContext());
+//        }
     }
 }

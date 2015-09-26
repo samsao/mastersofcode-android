@@ -1,4 +1,4 @@
-package com.samsao.projecttemplate.presentation.main;
+package com.oyeoye.merchant.presentation.main;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutCompat;
@@ -6,9 +6,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.samsao.projecttemplate.R;
-import com.samsao.projecttemplate.presentation.base.PresentedFrameLayout;
-import com.samsao.projecttemplate.presentation.main.stackable.MainStackableComponent;
+import com.oyeoye.merchant.R;
+import com.oyeoye.merchant.presentation.base.PresentedFrameLayout;
+import com.oyeoye.merchant.presentation.main.stackable.MainStackableComponent;
 
 import architect.robot.DaggerService;
 import autodagger.AutoInjector;
