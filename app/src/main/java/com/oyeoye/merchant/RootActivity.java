@@ -11,6 +11,7 @@ import android.view.MenuItem;
 
 import com.oyeoye.merchant.presentation.RootActivityPresenter;
 import com.oyeoye.merchant.presentation.deals.add_deal.AddDealView;
+import com.oyeoye.merchant.presentation.deals.add_deal.stackable.AddDealStackable;
 import com.oyeoye.merchant.presentation.main.stackable.MainStackable;
 
 import javax.inject.Inject;
@@ -86,7 +87,7 @@ public class RootActivity extends AppCompatActivity implements RootActivityPrese
         mMainActivityPresenter.takeView(this);
 
         // it is usually the best to create the mNavigator after everything else
-        mNavigator = ActivityArchitector.onCreateNavigator(this, savedInstanceState, mNavigatorView, new MainStackable());
+        mNavigator = ActivityArchitector.onCreateNavigator(this, savedInstanceState, mNavigatorView, new AddDealStackable());
     }
 
     @Override
