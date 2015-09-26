@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.oyeoye.merchant.presentation.RootActivityPresenter;
+import com.oyeoye.merchant.presentation.deals.add_deal.AddDealView;
 import com.oyeoye.merchant.presentation.main.stackable.MainStackable;
 
 import javax.inject.Inject;
@@ -19,6 +20,7 @@ import architect.NavigatorView;
 import architect.TransitionsMapping;
 import architect.commons.ActivityArchitector;
 import architect.commons.Architected;
+import architect.commons.transition.BottomAppearTransition;
 import architect.commons.transition.Config;
 import architect.commons.transition.LateralViewTransition;
 import architect.robot.DaggerService;
@@ -66,7 +68,7 @@ public class RootActivity extends AppCompatActivity implements RootActivityPrese
                 Navigator navigator = Navigator.create(scope, null, new Navigator.Config().dontRestoreStackAfterKill(true));
                 navigator.transitions().register(new TransitionsMapping()
                                 .byDefault(new LateralViewTransition(new Config().duration(300)))
-//                                .show(SomeView.class).withTransition(new FadeModalTransition(new Config().duration(250)))
+                                .show(AddDealView.class).withTransition(new BottomAppearTransition())
                 );
                 return navigator;
             }

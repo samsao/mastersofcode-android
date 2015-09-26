@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.oyeoye.merchant.R;
 import com.oyeoye.merchant.presentation.base.PresentedFrameLayout;
@@ -18,8 +19,10 @@ import butterknife.ButterKnife;
 @AutoInjector(AddDealPresenter.class)
 public class AddDealView extends PresentedFrameLayout<AddDealPresenter> {
 
+    @Bind(R.id.screen_add_deal_layout)
+    public LinearLayout mLayout;
     @Bind(R.id.screen_add_deal_toolbar)
-    protected Toolbar mToolbar;
+    public Toolbar mToolbar;
 
     public AddDealView(Context context) {
         super(context);

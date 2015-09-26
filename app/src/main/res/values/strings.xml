@@ -6,4 +6,6 @@
         <item>Bought Deals</item>
     </string-array>
 
+    <string name="add_deal">Add a deal</string>
+
 </resources>

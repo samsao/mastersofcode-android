@@ -7,6 +7,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.oyeoye.merchant.DaggerScope;
+import com.oyeoye.merchant.R;
 import com.oyeoye.merchant.RootActivity;
 import com.oyeoye.merchant.presentation.AbstractPresenter;
 import com.oyeoye.merchant.presentation.RootActivityPresenter;
@@ -31,15 +32,15 @@ public class AddDealPresenter extends AbstractPresenter<AddDealView> implements 
     }
 
     public void resetMenu(Toolbar toolbar) {
-        mRootActivityPresenter.setupToolbar(getView().mToolbar);
+        mRootActivityPresenter.setupToolbar(toolbar);
         mRootActivityPresenter.resetMenu(this);
     }
 
     @Override
     public void setupToolbarMenu(ActionBar actionBar, MenuInflater menuInflater, Menu menu) {
-        actionBar.setDisplayHomeAsUpEnabled(false);
+        actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowTitleEnabled(true);
-        actionBar.setTitle("TEMPLATE PROJECT");
+        actionBar.setTitle(getString(R.string.add_deal));
     }
 
     @Override

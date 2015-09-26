@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.oyeoye.merchant.R;
 import com.oyeoye.merchant.presentation.base.PresentedFrameLayout;
@@ -22,12 +23,14 @@ import butterknife.ButterKnife;
 @AutoInjector(MainPresenter.class)
 public class MainView extends PresentedFrameLayout<MainPresenter> {
 
+    @Bind(R.id.screen_main_layout)
+    public LinearLayout mLayout;
     @Bind(R.id.screen_main_toolbar)
-    protected Toolbar mToolbar;
+    public Toolbar mToolbar;
     @Bind(R.id.screen_main_tab_layout)
-    protected TabLayout mTabLayout;
+    public TabLayout mTabLayout;
     @Bind(R.id.screen_main_viewpager)
-    protected ViewPager mViewPager;
+    public ViewPager mViewPager;
 
     protected MainPagerAdapter mMainPagerAdapter;
     public MainView(Context context) {
