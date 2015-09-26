@@ -9,6 +9,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.places.Places;
 import com.oyeoye.merchant.presentation.RootActivityPresenter;
 import com.oyeoye.merchant.presentation.deals.add_deal.AddDealView;
 import com.oyeoye.merchant.presentation.main.stackable.MainStackable;
@@ -30,6 +33,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import mortar.MortarScope;
 import mortar.bundler.BundleServiceRunner;
+import timber.log.Timber;
 
 @AutoComponent(
         dependencies = MainApplication.class,
@@ -37,10 +41,11 @@ import mortar.bundler.BundleServiceRunner;
 )
 @AutoInjector
 @DaggerScope(RootActivity.class)
-public class RootActivity extends AppCompatActivity implements RootActivityPresenter.Activity {
+public class RootActivity extends AppCompatActivity implements RootActivityPresenter.Activity, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private MortarScope mScope;
     private Navigator mNavigator;
+    private GoogleApiClient mGoogleApiClient;
 
     @Inject
     protected RootActivityPresenter mMainActivityPresenter;
@@ -85,6 +90,14 @@ public class RootActivity extends AppCompatActivity implements RootActivityPrese
         DaggerService.<RootActivityComponent>get(this).inject(this);
         mMainActivityPresenter.takeView(this);
 
+        mGoogleApiClient = new GoogleApiClient
+                .Builder(this)
+                .addApi(Places.GEO_DATA_API)
+                .addApi(Places.PLACE_DETECTION_API)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .build();
+
         // it is usually the best to create the mNavigator after everything else
         mNavigator = ActivityArchitector.onCreateNavigator(this, savedInstanceState, mNavigatorView, new MainStackable());
     }
@@ -106,11 +119,13 @@ public class RootActivity extends AppCompatActivity implements RootActivityPrese
     protected void onStart() {
         super.onStart();
         mNavigator.delegate().onStart();
+        mGoogleApiClient.connect();
     }
 
     @Override
     protected void onStop() {
         mNavigator.delegate().onStop();
+        mGoogleApiClient.disconnect();
         super.onStop();
     }
 
@@ -145,6 +160,11 @@ public class RootActivity extends AppCompatActivity implements RootActivityPrese
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return mMainActivityPresenter.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+         mMainActivityPresenter.onActivityResult(requestCode, resultCode, data);
     }
 
     /**
@@ -184,4 +204,18 @@ public class RootActivity extends AppCompatActivity implements RootActivityPrese
         return this;
     }
 
+    @Override
+    public void onConnected(Bundle bundle) {
+        Timber.i("Google Places connected");
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+        Timber.i("Google Places connection suspended");
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+        Timber.e("Google Places connection failed");
+    }
 }

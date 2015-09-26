@@ -1,6 +1,8 @@
 package com.oyeoye.merchant.presentation;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -9,6 +11,9 @@ import android.view.MenuItem;
 
 import com.oyeoye.merchant.DaggerScope;
 import com.oyeoye.merchant.RootActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -21,10 +26,11 @@ import mortar.bundler.BundleService;
 public class RootActivityPresenter extends Presenter<RootActivityPresenter.Activity> {
 
     private SetupToolbarHandler mSetupToolbarHandler;
+    private List<ActivityResultListener> mActivityResultListeners;
 
     @Inject
     public RootActivityPresenter() {
-
+        mActivityResultListeners = new ArrayList<>();
     }
 
     @Override
@@ -76,7 +82,35 @@ public class RootActivityPresenter extends Presenter<RootActivityPresenter.Activ
         }
     }
 
+    public void startActivityForResult(Intent intent, int requestCode) {
+        startActivityForResult(intent, requestCode, null);
+    }
+
+    public void startActivityForResult(Intent intent, int requestCode, Bundle options) {
+        ((RootActivity) getView()).startActivityForResult(intent, requestCode, options);
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (!mActivityResultListeners.isEmpty()) {
+            for (int i = 0; i < mActivityResultListeners.size(); i++) {
+                mActivityResultListeners.get(i).onActivityResult(requestCode, resultCode, data);
+            }
+        }
+    }
+
+    public void addActivityResultListener(ActivityResultListener listener) {
+        mActivityResultListeners.add(listener);
+    }
+
+    public void removeActivityResultListener(ActivityResultListener listener) {
+        mActivityResultListeners.remove(listener);
+    }
+
     public interface Activity {
         Context getContext();
+    }
+
+    public interface ActivityResultListener {
+        void onActivityResult(int requestCode, int resultCode, Intent data);
     }
 }
