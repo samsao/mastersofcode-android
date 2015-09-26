@@ -1,0 +1,140 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
+/*
+* Manually set the MAJOR, MINOR and PATCH version components here.
+*/
+ext {
+    majorVersion = "0"
+    minorVersion = "0"
+    patchVersion = "1"
+}
+
+def computeVersionName() {
+    return majorVersion + "." + minorVersion + "." + patchVersion
+}
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.0"
+
+    defaultConfig {
+        applicationId "com.samsao.projecttemplate"
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode System.env.BUILD_NUMBER ? "$System.env.BUILD_NUMBER".toInteger() : 9999999
+        versionName computeVersionName()
+    }
+
+//    signingConfigs {
+//        debug {
+//            storeFile file("../android.keystore")
+//            storePassword "fds6GH45weadvz6ZsK"
+//            keyAlias "debug"
+//            keyPassword "fds6GH45weadvz6ZsK"
+//        }
+//        release {
+//            storeFile file("../android.keystore")
+//            storePassword "fds6GH45weadvz6ZsK"
+//            keyAlias "release"
+//            keyPassword "fds6GH45weadvz6ZsK"
+//        }
+//    }
+//
+//    buildTypes {
+//        debug {
+//            debuggable true
+//            signingConfig signingConfigs.debug
+//            multiDexEnabled true
+//        }
+//        release {
+//            debuggable false
+//            minifyEnabled true
+//            shrinkResources true
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfigs.release
+//            ext.betaDistributionGroupAliases="change_here"
+//        }
+//        debugRelease.initWith(buildTypes.release)
+//        debugRelease {
+//            debuggable true
+//        }
+//    }
+
+    packagingOptions {
+        exclude 'android.keystore'
+        exclude '.readme'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
+
+    lintOptions {
+        disable 'InvalidPackage'
+        abortOnError false
+    }
+
+//    productFlavors {
+//        prod {
+//        }
+//        dev {
+//        }
+//    }
+
+//    sourceSets {
+//        dev.setRoot('src/dev')
+//        prod.setRoot('src/prod')
+//    }
+}
+
+dependencies {
+    def android_support_library_version = '23.0.0'
+    def dagger_version = '2.0.1'
+    def jackson_version = '2.6.1'
+    def architect_version = '0.15-SNAPSHOT'
+
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:' + android_support_library_version
+    compile 'com.android.support:design:' + android_support_library_version
+    compile 'com.squareup.mortar:mortar:0.19'
+    compile 'com.google.dagger:dagger:' + dagger_version
+    apt 'com.google.dagger:dagger-compiler:' + dagger_version
+    provided 'org.glassfish:javax.annotation:10.0-b28'
+    compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.jakewharton.timber:timber:3.1.0'
+    compile 'com.fasterxml.jackson.core:jackson-databind:' + jackson_version
+    compile 'com.fasterxml.jackson.core:jackson-core:' + jackson_version
+    compile 'com.fasterxml.jackson.core:jackson-annotations:' + jackson_version
+    compile 'com.github.lukaspili.autodagger2:autodagger2:1.1'
+    apt 'com.github.lukaspili.autodagger2:autodagger2-compiler:1.1'
+    compile 'com.github.lukaspili.mortar-architect:architect:' + architect_version
+    compile 'com.github.lukaspili.mortar-architect:commons:' + architect_version
+    compile 'com.github.lukaspili.mortar-architect:robot:' + architect_version
+    apt 'com.github.lukaspili.mortar-architect:robot-compiler:' + architect_version
+    compile 'com.hannesdorfmann.parcelableplease:annotation:1.0.1'
+    apt 'com.hannesdorfmann.parcelableplease:processor:1.0.1'
+    compile 'org.parceler:parceler-api:1.0.3'
+    apt 'org.parceler:parceler:1.0.3'
+
+    compile('com.crashlytics.sdk.android:crashlytics:2.5.2@aar') {
+        transitive = true;
+    }
+}
