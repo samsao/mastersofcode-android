@@ -14,10 +14,6 @@ import android.widget.Toast;
 import architect.Navigator;
 import mortar.ViewPresenter;
 
-/**
- * @author jfcartier
- * @since 15-06-24
- */
 public abstract class AbstractPresenter<V extends View> extends ViewPresenter<V> {
 
 

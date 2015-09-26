@@ -9,10 +9,6 @@ import com.oyeoye.merchant.presentation.AbstractPresenter;
 import architect.view.HandlesBack;
 import architect.view.HandlesViewTransition;
 
-/**
- * @author jfcartier
- * @since 15-08-06
- */
 public abstract class PresentedLinearLayout<T extends AbstractPresenter> extends architect.commons.view.PresentedLinearLayout<T> implements HandlesBack, HandlesViewTransition {
     public PresentedLinearLayout(Context context) {
         super(context);

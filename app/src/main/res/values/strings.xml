@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Oye Oye Merchant</string>
 
+    <string-array name="screen_main_tab_titles">
+        <item>My Deals</item>
+        <item>Bought Deals</item>
+    </string-array>
+
 </resources>

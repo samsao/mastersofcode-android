@@ -7,9 +7,6 @@ import autodagger.AutoComponent;
 import mortar.MortarScope;
 import timber.log.Timber;
 
-/**
- * Created by lcampos on 2015-09-07.
- */
 @AutoComponent(
         modules = MainApplication.Module.class,
         superinterfaces = AppDependencies.class

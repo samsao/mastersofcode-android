@@ -16,10 +16,6 @@ import autodagger.AutoExpose;
 import mortar.Presenter;
 import mortar.bundler.BundleService;
 
-/**
- * @author jliang
- * @since 2015-08-07
- */
 @AutoExpose(RootActivity.class)
 @DaggerScope(RootActivity.class)
 public class RootActivityPresenter extends Presenter<RootActivityPresenter.Activity> {
