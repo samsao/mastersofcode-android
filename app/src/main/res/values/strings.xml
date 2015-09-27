@@ -16,14 +16,14 @@
 
     <!--Add Deal-->
     <string name="add_deal">Add a deal</string>
-    <string name="add_deal_take_picture">TAKE PICTURE</string>
-    <string name="add_deal_retake_picture">RETAKE PICTURE</string>
-    <string name="add_deal_enter_title">Enter Deal Title</string>
+    <string name="add_deal_take_picture">Take Picture</string>
+    <string name="add_deal_retake_picture">Retake Picture</string>
+    <string name="add_deal_enter_title">Deal Title</string>
     <string name="add_deal_enter_quantity">Enter Quantity</string>
-    <string name="add_deal_enter_original_price">Enter Original Price</string>
-    <string name="add_deal_enter_discounted_price">Enter Discounted Price</string>
-    <string name="add_deal_enter_description">Enter Description</string>
-    <string name="add_deal_broadcast">BROADCAST YOUR DEAL</string>
+    <string name="add_deal_enter_original_price">Original Price</string>
+    <string name="add_deal_enter_discounted_price">Discounted Price</string>
+    <string name="add_deal_enter_description">Description</string>
+    <string name="add_deal_broadcast">Post Deal</string>
     <string name="add_deal_must_take_picture">Please take a picture before broadcasting your deal</string>
     <string name="add_deal_fill_all_fields">Please fill up all fields before broadcasting your deal</string>
 

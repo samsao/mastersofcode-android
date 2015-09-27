@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/screen_add_deal_layout"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/screen_add_deal_toolbar"
-        style="@style/ToolbarStyle"/>
+        style="@style/ToolbarStyle" />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -17,89 +16,138 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="bottom"
             android:orientation="vertical">
 
             <FrameLayout
                 android:id="@+id/screen_add_deal_camera_preview_container"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@android:color/black"/>
+                android:background="@android:color/black" />
 
             <Button
                 android:id="@+id/screen_add_deal_take_picture_button"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@drawable/take_picture_button"
+                android:background="@drawable/blue_button"
                 android:enabled="false"
                 android:text="@string/add_deal_take_picture"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@android:color/white"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="@dimen/spacing">
 
-                <EditText
-                    android:id="@+id/screen_add_deal_title"
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/add_deal_enter_title"
-                    android:imeOptions="actionNext"
-                    android:singleLine="true"/>
+                    android:theme="@style/TextLabel">
 
-                <EditText
-                    android:id="@+id/screen_add_deal_quantity"
+                    <EditText
+                        android:id="@+id/screen_add_deal_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/add_deal_enter_title"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:windowSoftInputMode="adjustPan" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/add_deal_enter_quantity"
-                    android:imeOptions="actionNext"
-                    android:inputType="number"
-                    android:singleLine="true"/>
+                    android:theme="@style/TextLabel">
 
-                <EditText
-                    android:id="@+id/screen_add_deal_original_price"
+                    <EditText
+                        android:id="@+id/screen_add_deal_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/add_deal_enter_description"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/add_deal_enter_original_price"
-                    android:imeOptions="actionNext"
-                    android:inputType="number"
-                    android:singleLine="true"/>
+                    android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/screen_add_deal_discounted_price"
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:theme="@style/TextLabel">
+
+                        <EditText
+                            android:id="@+id/screen_add_deal_original_price"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="@string/add_deal_enter_original_price"
+                            android:imeOptions="actionNext"
+                            android:inputType="number"
+                            android:singleLine="true" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:theme="@style/TextLabel">
+
+                        <EditText
+                            android:id="@+id/screen_add_deal_discounted_price"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/add_deal_enter_discounted_price"
+                            android:imeOptions="actionNext"
+                            android:inputType="number"
+                            android:singleLine="true" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/add_deal_enter_discounted_price"
-                    android:imeOptions="actionNext"
-                    android:inputType="number"
-                    android:singleLine="true"/>
+                    android:theme="@style/TextLabel">
 
-                <EditText
-                    android:id="@+id/screen_add_deal_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:hint="@string/add_deal_enter_description"
-                    android:imeOptions="actionNext"
-                    android:maxLines="4"/>
+                    <EditText
+                        android:id="@+id/screen_add_deal_quantity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/add_deal_enter_quantity"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:singleLine="true" />
 
-                <Button
-                    android:id="@+id/screen_add_deal_broadcast_button"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    android:background="@drawable/take_picture_button"
-                    android:text="@string/add_deal_broadcast"
-                    android:textColor="@android:color/white"/>
+                </android.support.design.widget.TextInputLayout>
 
             </LinearLayout>
+
         </LinearLayout>
+
+        <Button
+            android:id="@+id/screen_add_deal_broadcast_button"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="bottom"
+            android:background="@drawable/yellow_button"
+            android:text="@string/add_deal_broadcast"
+            android:textColor="@android:color/white" />
 
         <com.oyeoye.merchant.presentation.util.LoadingView
             android:id="@+id/screen_add_deal_overlay"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
     </FrameLayout>
 

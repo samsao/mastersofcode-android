@@ -126,7 +126,7 @@
             android:id="@+id/list_item_deal_buy_button"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/take_picture_button"
+            android:background="@drawable/yellow_button"
             android:text="@string/my_deals_edit"
             android:textColor="@android:color/white" />
 
