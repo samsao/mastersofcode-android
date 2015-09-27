@@ -1,6 +1,7 @@
 package com.oyeoye.merchant.presentation.deals.bought_deals;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -41,6 +42,16 @@ public class BoughtDealsView extends PresentedFrameLayout<BoughtDealsPresenter> 
         mRecyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(linearLayoutManager);
+        mRecyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
+            @Override
+            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+                if (parent.getChildAdapterPosition(view) != 0) {
+                    outRect.top = (int) getResources().getDimension(R.dimen.spacing);
+                } else {
+                    super.getItemOffsets(outRect, view, parent, state);
+                }
+            }
+        });
         mRecyclerView.setAdapter(mAdapter);
     }
 }

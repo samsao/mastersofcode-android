@@ -53,6 +53,7 @@ public class MainApplication extends Application {
 
     private MortarScope mScope;
     public static String SCOPE_NAME = "root";
+    private MainApplicationComponent mComponent;
 
     @Override
     public Object getSystemService(String name) {
@@ -72,11 +73,15 @@ public class MainApplication extends Application {
             Fabric.with(this, new Crashlytics(), new TwitterCore(authConfig), new Digits());
         }
 
-        MainApplicationComponent component = DaggerMainApplicationComponent.builder().module(new Module()).build();
+        mComponent = DaggerMainApplicationComponent.builder().module(new Module()).build();
 
         mScope = MortarScope.buildRootScope()
-                .withService(DaggerService.SERVICE_NAME, component)
+                .withService(DaggerService.SERVICE_NAME, mComponent)
                 .build(SCOPE_NAME);
+    }
+
+    public MainApplicationComponent getComponent() {
+        return mComponent;
     }
 
     @dagger.Module

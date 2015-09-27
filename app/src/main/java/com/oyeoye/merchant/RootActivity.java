@@ -13,7 +13,6 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.places.Places;
 import com.oyeoye.merchant.business.UserManager;
-import com.oyeoye.merchant.business.api.entity.User;
 import com.oyeoye.merchant.presentation.RootActivityPresenter;
 import com.oyeoye.merchant.presentation.deals.my_deals.MyDealsView;
 import com.oyeoye.merchant.presentation.main.stackable.MainStackable;
@@ -35,9 +34,6 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import mortar.MortarScope;
 import mortar.bundler.BundleServiceRunner;
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
 import timber.log.Timber;
 
 @AutoComponent(
@@ -112,24 +108,24 @@ public class RootActivity extends AppCompatActivity implements RootActivityPrese
         } else {
             // FIXME
 //            mNavigator = ActivityArchitector.onCreateNavigator(this, savedInstanceState, mNavigatorView, new LoginStackable());
+//            mUserManager.login("5148888888", new Callback<User>() {
+//                @Override
+//                public void success(User user, Response response) {
+//                    Timber.i("logging success");
+//                    if (user.getPlace() == null) {
+////                        mNavigator = ActivityArchitector.onCreateNavigator(RootActivity.this, savedInstanceState, mNavigatorView, new RegistrationStackable());
+//                    } else {
+////                        mNavigator = ActivityArchitector.onCreateNavigator(RootActivity.this, savedInstanceState, mNavigatorView, new MainStackable());
+//                    }
+//                }
+//
+//                @Override
+//                public void failure(RetrofitError error) {
+//                    Timber.e("logging failure");
+////                    mNavigator = ActivityArchitector.onCreateNavigator(RootActivity.this, savedInstanceState, mNavigatorView, new MainStackable());
+//                }
+//            });
             mNavigator = ActivityArchitector.onCreateNavigator(this, savedInstanceState, mNavigatorView, new MainStackable());
-            mUserManager.login("5148888888", new Callback<User>() {
-                @Override
-                public void success(User user, Response response) {
-                    Timber.i("logging success");
-                    if (user.getPlace() == null) {
-//                        mNavigator = ActivityArchitector.onCreateNavigator(RootActivity.this, savedInstanceState, mNavigatorView, new RegistrationStackable());
-                    } else {
-//                        mNavigator = ActivityArchitector.onCreateNavigator(RootActivity.this, savedInstanceState, mNavigatorView, new MainStackable());
-                    }
-                }
-
-                @Override
-                public void failure(RetrofitError error) {
-                    Timber.e("logging failure");
-//                    mNavigator = ActivityArchitector.onCreateNavigator(RootActivity.this, savedInstanceState, mNavigatorView, new MainStackable());
-                }
-            });
         }
     }
 

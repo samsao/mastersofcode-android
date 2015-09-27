@@ -141,6 +141,10 @@ public class PreferenceManager {
         return getBoolean(GCM_TOKEN_SENT_TO_SERVER_KEY, false);
     }
 
+    public void setGcmToken(String token) {
+        putString(GCM_TOKEN, token).apply();
+    }
+
     public String getGcmToken() {
         return getString(GCM_TOKEN, null);
     }

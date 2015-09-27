@@ -4,6 +4,7 @@ import com.oyeoye.merchant.business.api.Api;
 import com.oyeoye.merchant.business.api.entity.Deal;
 
 import java.io.File;
+import java.util.List;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -28,5 +29,9 @@ public class DealManager {
                 deal.getQuantity(),
                 new TypedFile("application/octet-stream", new File(imagePath)),
                 callback);
+    }
+
+    public void getDeals(Callback<List<Deal>> callback) {
+        mApiService.getDeals(callback);
     }
 }

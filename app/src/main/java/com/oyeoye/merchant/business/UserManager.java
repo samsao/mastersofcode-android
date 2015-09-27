@@ -28,6 +28,12 @@ public class UserManager {
         return mPreferenceManager.getGcmToken();
     }
 
+    public void setUserGcmToken(String token) {
+        mPreferenceManager.setGcmTokenSentToServer(TextUtils.isEmpty(token));
+        mPreferenceManager.setGcmToken(token);
+        updateGcmId();
+    }
+
     public String getApiToken() {
         return mPreferenceManager.getApiToken();
     }
@@ -55,5 +61,19 @@ public class UserManager {
 
     public boolean isLoggedIn() {
         return !TextUtils.isEmpty(getApiToken());
+    }
+
+    public void updateGcmId() {
+        mApiService.updateGcmId(getUserGcmToken(), new Callback<User>() {
+            @Override
+            public void success(User user, Response response) {
+
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+
+            }
+        });
     }
 }

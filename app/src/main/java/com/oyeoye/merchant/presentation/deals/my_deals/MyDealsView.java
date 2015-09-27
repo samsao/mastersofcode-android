@@ -1,6 +1,7 @@
 package com.oyeoye.merchant.presentation.deals.my_deals;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,7 +14,6 @@ import com.oyeoye.merchant.business.api.entity.Deal;
 import com.oyeoye.merchant.presentation.base.PresentedFrameLayout;
 import com.oyeoye.merchant.presentation.deals.my_deals.stackable.MyDealsStackableComponent;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import architect.robot.DaggerService;
@@ -45,16 +45,16 @@ public class MyDealsView extends PresentedFrameLayout<MyDealsPresenter> implemen
         /*
         TODO Erase mockup stuff
          */
-        Deal fakeDeal = new Deal();
-        fakeDeal.setTitle("FAKE DEAL TITLE");
-        fakeDeal.setOriginalPrice(129.99f);
-        fakeDeal.setPrice(99.99f);
-        fakeDeal.setQuantity(10);
-        fakeDeal.setDescription("FAKE DEAL DESCRIPTION BLAHBLEH");
-        fakeDeal.setImage("http://maplesandbox.ca/wp-content/uploads/2013/11/Baloney-Sandwich2.jpg");
-        List<Deal> fakeDeals = new ArrayList<>();
-        fakeDeals.add(fakeDeal);
-        mAdapter.setList(fakeDeals);
+//        Deal fakeDeal = new Deal();
+//        fakeDeal.setTitle("FAKE DEAL TITLE");
+//        fakeDeal.setOriginalPrice(129.99f);
+//        fakeDeal.setPrice(99.99f);
+//        fakeDeal.setQuantity(10);
+//        fakeDeal.setDescription("FAKE DEAL DESCRIPTION BLAHBLEH");
+//        fakeDeal.setImage("http://maplesandbox.ca/wp-content/uploads/2013/11/Baloney-Sandwich2.jpg");
+//        List<Deal> fakeDeals = new ArrayList<>();
+//        fakeDeals.add(fakeDeal);
+//        mAdapter.setList(fakeDeals);
     }
 
     @Override
@@ -63,7 +63,18 @@ public class MyDealsView extends PresentedFrameLayout<MyDealsPresenter> implemen
         mRecyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(linearLayoutManager);
+        mRecyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
+            @Override
+            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+                if (parent.getChildAdapterPosition(view) != 0) {
+                    outRect.top = (int) getResources().getDimension(R.dimen.spacing);
+                } else {
+                    super.getItemOffsets(outRect, view, parent, state);
+                }
+            }
+        });
         mRecyclerView.setAdapter(mAdapter);
+        presenter.fetchDeals();
     }
 
     @OnClick(R.id.screen_my_deals_fab)
@@ -74,5 +85,9 @@ public class MyDealsView extends PresentedFrameLayout<MyDealsPresenter> implemen
     @Override
     public void onClickDeak(Deal deal) {
         presenter.editDeal(deal);
+    }
+
+    public void setDeals(List<Deal> deals) {
+        mAdapter.setList(deals);
     }
 }

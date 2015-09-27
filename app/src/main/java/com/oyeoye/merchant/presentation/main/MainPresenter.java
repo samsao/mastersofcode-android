@@ -10,6 +10,7 @@ import com.oyeoye.merchant.AppDependencies;
 import com.oyeoye.merchant.DaggerScope;
 import com.oyeoye.merchant.R;
 import com.oyeoye.merchant.RootActivity;
+import com.oyeoye.merchant.business.DealManager;
 import com.oyeoye.merchant.presentation.AbstractPresenter;
 import com.oyeoye.merchant.presentation.RootActivityPresenter;
 import com.oyeoye.merchant.presentation.SetupToolbarHandler;
@@ -27,9 +28,11 @@ import autodagger.AutoExpose;
 public class MainPresenter extends AbstractPresenter<MainView> implements SetupToolbarHandler {
 
     private final RootActivityPresenter mRootActivityPresenter;
+    private final DealManager mDealManager;
 
-    public MainPresenter(RootActivityPresenter mainActivityPresenter) {
-        mRootActivityPresenter = mainActivityPresenter;
+    public MainPresenter(RootActivityPresenter rootActivityPresenter, DealManager dealManager) {
+        mRootActivityPresenter = rootActivityPresenter;
+        mDealManager = dealManager;
     }
 
     public void resetMenu(Toolbar toolbar) {
@@ -49,4 +52,7 @@ public class MainPresenter extends AbstractPresenter<MainView> implements SetupT
         return false;
     }
 
+    public DealManager getDealManager() {
+        return mDealManager;
+    }
 }

@@ -19,7 +19,7 @@ public class Deal implements Serializable {
     public String description;
     @JsonProperty("price")
     public Float price;
-    @JsonProperty("original_price")
+    @JsonProperty("originalPrice")
     public Float originalPrice;
     @JsonProperty("quantity")
     public Integer quantity;
