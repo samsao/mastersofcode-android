@@ -63,7 +63,8 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:hint="@string/add_deal_enter_description"
-            android:imeOptions="actionNext" />
+            android:imeOptions="actionNext"
+            android:maxLines="4" />
 
         <Button
             android:id="@+id/screen_add_deal_broadcast_button"
