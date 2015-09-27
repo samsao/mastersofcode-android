@@ -8,4 +8,7 @@
 
     <string name="add_deal">Add a deal</string>
 
+    <string name="add_deal_take_picture">Take Picture</string>
+    <string name="add_deal_retake_picture">Retake Picture</string>
+
 </resources>

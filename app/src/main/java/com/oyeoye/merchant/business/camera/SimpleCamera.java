@@ -144,7 +144,13 @@ public class SimpleCamera extends TextureView implements TextureView.SurfaceText
 
     @Override
     public boolean onSurfaceTextureDestroyed(SurfaceTexture surfaceTexture) {
-        release();
+        releaseCamera();
+        setSurfaceTextureListener(null);
+
+        if (mOrientationListener != null) {
+            mOrientationListener.disable();
+            mOrientationListener = null;
+        }
         return true;
     }
 
@@ -472,9 +478,9 @@ public class SimpleCamera extends TextureView implements TextureView.SurfaceText
             mOrientationListener = null;
         }
 
-        /*if (mCameraPreviewContainer != null) {
+        if (mCameraPreviewContainer != null) {
             mCameraPreviewContainer.removeAllViews();
-        }*/
+        }
     }
 
     /**
