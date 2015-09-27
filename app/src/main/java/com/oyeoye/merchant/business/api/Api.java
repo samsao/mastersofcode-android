@@ -40,4 +40,7 @@ public interface Api {
 
     @GET("/merchant/deal")
     void getDeals(Callback<List<Deal>> callback);
+
+    @GET("/merchant/transaction/complete")
+    void validateTransaction(@Field("transaction") String transaction, @Field("key") String key, Callback<Void> callback);
 }
