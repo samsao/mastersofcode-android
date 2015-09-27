@@ -42,7 +42,8 @@ public interface Api {
     @GET("/merchant/deal")
     void getDeals(Callback<List<Deal>> callback);
 
-    @GET("/merchant/transaction/complete")
+    @POST("/merchant/transaction/complete")
+    @FormUrlEncoded
     void validateTransaction(@Field("transaction") String transaction, @Field("key") String key, Callback<Void> callback);
 
     @GET("/merchant/transaction")
