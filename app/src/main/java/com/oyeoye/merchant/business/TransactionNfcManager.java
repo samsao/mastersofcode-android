@@ -41,6 +41,7 @@ public class TransactionNfcManager {
         Timber.d("NFC RES: %s", string);
 
         String[] array = StringUtils.split(string, ':');
+        Timber.d("Post transaction complete: %s - %s", array[0], array[1]);
         api.validateTransaction(array[0], array[1], new Callback<Void>() {
             @Override
             public void success(Void aVoid, Response response) {

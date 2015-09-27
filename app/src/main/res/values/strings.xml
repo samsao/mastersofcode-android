@@ -2,8 +2,8 @@
     <string name="app_name">Oyez Oyez Merchant</string>
 
     <string-array name="screen_main_tab_titles">
-        <item>My Deals</item>
-        <item>Bought Deals</item>
+        <item>My Offers</item>
+        <item>Pickups</item>
     </string-array>
 
     <!--Registration-->

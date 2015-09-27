@@ -1,7 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                                    xmlns:tools="http://schemas.android.com/tools"
+                                    android:id="@+id/list_item_bought_deal"
+                                    style="@style/AppCardView">
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.oyeoye.merchant.presentation.util.AspectRatioImageView
+                android:id="@+id/list_item_bought_deal_image"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:contentDescription="@null"
+                android:scaleType="centerCrop"
+                app:ratio="2" />
+
+            <TextView
+                android:id="@+id/list_item_bought_deal_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|start"
+                android:layout_marginBottom="@dimen/spacing"
+                android:layout_marginLeft="@dimen/spacing"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/font_size_very_large" />
+
+        </FrameLayout>
+
+        <!--Description-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/spacing"
+            android:paddingRight="@dimen/spacing"
+            android:paddingTop="@dimen/spacing">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/spacing"
+                android:src="@drawable/ic_assignment_24dp" />
+
+            <TextView
+                android:id="@+id/list_item_bought_deal_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/light_gray"
+                android:textSize="@dimen/font_size_medium" />
+
+        </LinearLayout>
+
+        <!--Price-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/spacing"
+            android:paddingRight="@dimen/spacing"
+            android:paddingTop="@dimen/spacing">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/spacing"
+                android:src="@drawable/ic_attach_money_24dp" />
+
+            <TextView
+                android:id="@+id/list_item_bought_deal_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:textColor="@color/light_gray"
+                android:textSize="@dimen/font_size_medium" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/list_item_bought_deal_status"
+            android:padding="@dimen/spacing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/light_blue"
+            android:textSize="@dimen/font_size_medium" />
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

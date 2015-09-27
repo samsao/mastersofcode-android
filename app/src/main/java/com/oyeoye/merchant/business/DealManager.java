@@ -2,6 +2,7 @@ package com.oyeoye.merchant.business;
 
 import com.oyeoye.merchant.business.api.Api;
 import com.oyeoye.merchant.business.api.entity.Deal;
+import com.oyeoye.merchant.business.api.entity.Transaction;
 
 import java.io.File;
 import java.util.List;
@@ -33,5 +34,9 @@ public class DealManager {
 
     public void getDeals(Callback<List<Deal>> callback) {
         mApiService.getDeals(callback);
+    }
+
+    public void getTransactions(Callback<List<Transaction>> callback) {
+        mApiService.getTransactions(callback);
     }
 }
