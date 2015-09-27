@@ -103,30 +103,8 @@ public class RootActivity extends AppCompatActivity implements RootActivityPrese
                 .build();
 
         // it is usually the best to create the mNavigator after everything else
-        if (mUserManager.isLoggedIn()) {
-            mNavigator = ActivityArchitector.onCreateNavigator(this, savedInstanceState, mNavigatorView, new MainStackable());
-        } else {
-            // FIXME
-//            mNavigator = ActivityArchitector.onCreateNavigator(this, savedInstanceState, mNavigatorView, new LoginStackable());
-//            mUserManager.login("5148888888", new Callback<User>() {
-//                @Override
-//                public void success(User user, Response response) {
-//                    Timber.i("logging success");
-//                    if (user.getPlace() == null) {
-////                        mNavigator = ActivityArchitector.onCreateNavigator(RootActivity.this, savedInstanceState, mNavigatorView, new RegistrationStackable());
-//                    } else {
-////                        mNavigator = ActivityArchitector.onCreateNavigator(RootActivity.this, savedInstanceState, mNavigatorView, new MainStackable());
-//                    }
-//                }
-//
-//                @Override
-//                public void failure(RetrofitError error) {
-//                    Timber.e("logging failure");
-////                    mNavigator = ActivityArchitector.onCreateNavigator(RootActivity.this, savedInstanceState, mNavigatorView, new MainStackable());
-//                }
-//            });
-            mNavigator = ActivityArchitector.onCreateNavigator(this, savedInstanceState, mNavigatorView, new MainStackable());
-        }
+        // FIXME twitter digits does not work :(
+        mNavigator = ActivityArchitector.onCreateNavigator(this, savedInstanceState, mNavigatorView, new MainStackable());
     }
 
     @Override

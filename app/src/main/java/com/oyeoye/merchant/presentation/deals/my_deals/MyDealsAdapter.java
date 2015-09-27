@@ -73,7 +73,6 @@ public class MyDealsAdapter extends RecyclerView.Adapter<MyDealsAdapter.ViewHold
         @Bind(R.id.list_item_deal_quantity)
         public TextView mDealQuantity;
 
-
         public ViewHolder(Context context, View itemView, OnClickListener onClickListener) {
             super(itemView);
             mContext = context;

@@ -14,6 +14,7 @@ import com.oyeoye.merchant.presentation.base.PresentedFrameLayout;
 import com.oyeoye.merchant.presentation.deals.bought_deals.stackable.BoughtDealsStackable;
 import com.oyeoye.merchant.presentation.deals.my_deals.stackable.MyDealsStackable;
 import com.oyeoye.merchant.presentation.main.stackable.MainStackableComponent;
+import com.oyeoye.merchant.presentation.util.LoadingView;
 
 import architect.robot.DaggerService;
 import autodagger.AutoInjector;
@@ -31,6 +32,8 @@ public class MainView extends PresentedFrameLayout<MainPresenter> {
     public TabLayout mTabLayout;
     @Bind(R.id.screen_main_viewpager)
     public ViewPager mViewPager;
+    @Bind(R.id.screen_main_overlay)
+    public LoadingView mLoadingView;
 
     protected MainPagerAdapter mMainPagerAdapter;
     public MainView(Context context) {
@@ -67,5 +70,13 @@ public class MainView extends PresentedFrameLayout<MainPresenter> {
         });
         mTabLayout.setupWithViewPager(mViewPager);
         presenter.resetMenu(mToolbar);
+    }
+
+    public void showLoadingView(boolean visible) {
+        if (visible) {
+            mLoadingView.setVisibility(VISIBLE);
+        } else {
+            mLoadingView.setVisibility(GONE);
+        }
     }
 }

@@ -20,6 +20,8 @@ import butterknife.ButterKnife;
 @AutoInjector(BoughtDealsPresenter.class)
 public class BoughtDealsView extends PresentedFrameLayout<BoughtDealsPresenter> {
 
+    public static final String TAG = "BoughtDealsView";
+
     @Bind(R.id.screen_bought_deals_recyclerview)
     public RecyclerView mRecyclerView;
 
@@ -34,6 +36,7 @@ public class BoughtDealsView extends PresentedFrameLayout<BoughtDealsPresenter> 
         ButterKnife.bind(view);
 
         mAdapter = new BoughtDealsAdapter();
+        setTag(TAG);
     }
 
     @Override

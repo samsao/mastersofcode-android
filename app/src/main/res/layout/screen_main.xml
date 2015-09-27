@@ -1,27 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+    android:id="@+id/screen_main_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/screen_main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/screen_main_toolbar"
-        style="@style/ToolbarStyle" />
+        style="@style/ToolbarStyle"/>
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/screen_main_tab_layout"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/light_blue"
-        app:tabSelectedTextColor="@color/light_yellow"
-        app:tabTextColor="@android:color/white" />
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/screen_main_viewpager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/screen_main_tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/light_blue"
+                app:tabSelectedTextColor="@color/light_yellow"
+                app:tabTextColor="@android:color/white"/>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/screen_main_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+        <com.oyeoye.merchant.presentation.util.LoadingView
+            android:id="@+id/screen_main_overlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
+
+    </FrameLayout>
 
 </LinearLayout>
