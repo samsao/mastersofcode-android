@@ -206,12 +206,10 @@ public class RootActivity extends AppCompatActivity implements RootActivityPrese
 
     @Override
     public void onConnected(Bundle bundle) {
-        Timber.i("Google Places connected");
     }
 
     @Override
     public void onConnectionSuspended(int i) {
-        Timber.i("Google Places connection suspended");
     }
 
     @Override

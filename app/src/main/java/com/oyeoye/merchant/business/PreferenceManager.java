@@ -7,7 +7,9 @@ public class PreferenceManager {
     /**
      * Constants
      */
-    private final String PREFERENCES_FILE_KEY = "com.oyeoye.merchant.business.PREFERENCE_FILE_KEY";
+    private final static String PREFERENCES_FILE_KEY = "com.oyeoye.merchant.business.PREFERENCE_FILE_KEY";
+    public final static String GCM_TOKEN_SENT_TO_SERVER_KEY = "com.oyeoye.merchant.business.GCM_TOKEN_SENT_TO_SERVER_KEY";
+    public final static String GCM_TOKEN = "com.oyeoye.merchant.business.GCM_TOKEN";
 
     /**
      * Shared preferences
@@ -99,6 +101,29 @@ public class PreferenceManager {
     }
 
     /**
+     * Helper method to put an boolean
+     *
+     * @param key
+     * @param value
+     * @return
+     */
+    private SharedPreferences.Editor putBoolean(String key, boolean value) {
+        return getEditor().putBoolean(key, value);
+    }
+
+    /**
+     * Helper method to get boolean
+     *
+     * @param key
+     * @param defValue
+     * @return
+     */
+    private boolean getBoolean(String key, boolean defValue) {
+        return mSharedPreferences.getBoolean(key, defValue);
+    }
+
+
+    /**
      * Helper method to remove a value with a given key
      *
      * @param key
@@ -107,4 +132,15 @@ public class PreferenceManager {
         getEditor().remove(key).apply();
     }
 
+    public void setGcmTokenSentToServer(boolean value) {
+        putBoolean(GCM_TOKEN_SENT_TO_SERVER_KEY, value).apply();
+    }
+
+    public boolean setGcmTokenSentToServer() {
+        return getBoolean(GCM_TOKEN_SENT_TO_SERVER_KEY, false);
+    }
+
+    public String getGcmToken() {
+        return getString(GCM_TOKEN, null);
+    }
 }

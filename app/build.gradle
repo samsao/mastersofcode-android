@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'com.google.gms.google-services'
 
 /*
 * Manually set the MAJOR, MINOR and PATCH version components here.
@@ -126,4 +127,5 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp-urlconnection:' + okhttp_version
     compile 'com.squareup.okhttp:okhttp:' + okhttp_version
     compile 'com.google.android.gms:play-services-location:8.1.0'
+    compile 'com.google.android.gms:play-services-gcm:8.1.0'
 }
