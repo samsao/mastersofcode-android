@@ -13,6 +13,9 @@ import com.oyeoye.merchant.business.api.entity.Deal;
 import com.oyeoye.merchant.presentation.base.PresentedFrameLayout;
 import com.oyeoye.merchant.presentation.deals.my_deals.stackable.MyDealsStackableComponent;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import architect.robot.DaggerService;
 import autodagger.AutoInjector;
 import butterknife.Bind;
@@ -37,6 +40,21 @@ public class MyDealsView extends PresentedFrameLayout<MyDealsPresenter> implemen
         ButterKnife.bind(view);
         setLayoutParams(new LinearLayoutCompat.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         mAdapter = new MyDealsAdapter(this);
+
+
+        /*
+        TODO Erase mockup stuff
+         */
+        Deal fakeDeal = new Deal();
+        fakeDeal.setTitle("FAKE DEAL TITLE");
+        fakeDeal.setOriginalPrice(129.99);
+        fakeDeal.setPrice(99.99);
+        fakeDeal.setQuantity(10);
+        fakeDeal.setDescription("FAKE DEAL DESCRIPTION BLAHBLEH");
+        fakeDeal.setImage("http://maplesandbox.ca/wp-content/uploads/2013/11/Baloney-Sandwich2.jpg");
+        List<Deal> fakeDeals = new ArrayList<>();
+        fakeDeals.add(fakeDeal);
+        mAdapter.setList(fakeDeals);
     }
 
     @Override

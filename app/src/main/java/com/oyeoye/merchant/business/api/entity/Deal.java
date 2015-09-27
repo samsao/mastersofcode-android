@@ -23,6 +23,8 @@ public class Deal implements Serializable {
     public Double originalPrice;
     @JsonProperty("image")
     public String image;
+    @JsonProperty("quantity")
+    public Integer quantity;
 
     public String getTitle() {
         return title;
@@ -62,5 +64,13 @@ public class Deal implements Serializable {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 }
