@@ -144,6 +144,7 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp:' + okhttp_version
     compile 'com.google.android.gms:play-services-location:8.1.0'
     compile 'com.google.android.gms:play-services-gcm:8.1.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
     compile('com.crashlytics.sdk.android:crashlytics:2.5.2@aar') {
         transitive = true;
     }

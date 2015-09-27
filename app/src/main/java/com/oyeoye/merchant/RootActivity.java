@@ -15,7 +15,7 @@ import com.google.android.gms.location.places.Places;
 import com.oyeoye.merchant.business.UserManager;
 import com.oyeoye.merchant.business.api.entity.User;
 import com.oyeoye.merchant.presentation.RootActivityPresenter;
-import com.oyeoye.merchant.presentation.deals.add_deal.AddDealView;
+import com.oyeoye.merchant.presentation.deals.my_deals.MyDealsView;
 import com.oyeoye.merchant.presentation.main.stackable.MainStackable;
 
 import javax.inject.Inject;
@@ -81,7 +81,7 @@ public class RootActivity extends AppCompatActivity implements RootActivityPrese
                 Navigator navigator = Navigator.create(scope, null, new Navigator.Config().dontRestoreStackAfterKill(true));
                 navigator.transitions().register(new TransitionsMapping()
                                 .byDefault(new LateralViewTransition(new Config().duration(300)))
-                                .show(AddDealView.class).withTransition(new BottomAppearTransition())
+                                .show(MyDealsView.class).withTransition(new BottomAppearTransition())
                 );
                 return navigator;
             }

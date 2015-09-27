@@ -38,7 +38,7 @@ public class AddDealView extends PresentedFrameLayout<AddDealPresenter> implemen
      * Constants
      */
     private final String LOG_TAG = getClass().getSimpleName();
-    final private float CAMERA_PREVIEW_ASPECT_RATIO = 0.4f;
+    final private float CAMERA_PREVIEW_ASPECT_RATIO = 0.5f;
 
     @Bind(R.id.screen_add_deal_layout)
     public LinearLayout mLayout;
