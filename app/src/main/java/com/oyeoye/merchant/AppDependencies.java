@@ -1,6 +1,7 @@
 package com.oyeoye.merchant;
 
 import com.oyeoye.merchant.business.PreferenceManager;
+import com.oyeoye.merchant.business.UserManager;
 
 import autodagger.AutoComponent;
 
@@ -8,5 +9,6 @@ import autodagger.AutoComponent;
         modules = MainApplication.Module.class
 )
 public interface AppDependencies {
+    UserManager userManager();
     PreferenceManager preferenceManager();
 }

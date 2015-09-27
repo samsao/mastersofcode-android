@@ -13,32 +13,36 @@ import android.widget.Toast;
 
 import architect.Navigator;
 import mortar.ViewPresenter;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
+import timber.log.Timber;
 
 public abstract class AbstractPresenter<V extends View> extends ViewPresenter<V> {
 
 
-//    public abstract class ApiCallback<T> implements Callback<T> {
-//        @Override
-//        public void success(T t, Response response) {
-//            if (!hasView()) {
-//                return;
-//            }
-//            onSuccess(t);
-//        }
-//
-//        @Override
-//        public void failure(RetrofitError error) {
-//            Timber.e("API error: " + error.getCause().getClass().getName() + ": " + error.getMessage());
-//            if (!hasView()) {
-//                return;
-//            }
-//            onFailure(error.getCause());
-//        }
-//
-//        public abstract void onSuccess(T t);
-//
-//        public abstract void onFailure(Throwable error);
-//    }
+    public abstract class ApiCallback<T> implements Callback<T> {
+        @Override
+        public void success(T t, Response response) {
+            if (!hasView()) {
+                return;
+            }
+            onSuccess(t);
+        }
+
+        @Override
+        public void failure(RetrofitError error) {
+            Timber.e("API error: " + error.getCause().getClass().getName() + ": " + error.getMessage());
+            if (!hasView()) {
+                return;
+            }
+            onFailure(error.getCause());
+        }
+
+        public abstract void onSuccess(T t);
+
+        public abstract void onFailure(Throwable error);
+    }
 
     /**
      * Override this method if needed

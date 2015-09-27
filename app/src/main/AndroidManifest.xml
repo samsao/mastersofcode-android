@@ -8,6 +8,8 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -61,5 +63,8 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBr4zZUPSRcQDB9g6fMvFuq3JCzWvEXTr8" />
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="369cc275b13fc2a69f58dc6067c6ceb6fb776650" />
     </application>
 </manifest>
