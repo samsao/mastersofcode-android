@@ -67,7 +67,6 @@
                 android:id="@+id/list_item_deal_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="jshdgfjdskwejhfdhgjerh"
                 android:textColor="@color/light_gray"
                 android:textSize="@dimen/font_size_medium" />
 
@@ -94,7 +93,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
-                android:text="99.99"
                 android:textColor="@color/light_gray"
                 android:textSize="@dimen/font_size_medium" />
 
@@ -129,7 +127,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@drawable/take_picture_button"
-            android:text="BUY NOW"
+            android:text="@string/my_deals_edit"
             android:textColor="@android:color/white" />
 
     </LinearLayout>

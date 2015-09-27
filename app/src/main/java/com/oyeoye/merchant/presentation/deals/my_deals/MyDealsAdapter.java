@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.oyeoye.merchant.R;
@@ -103,9 +102,6 @@ public class MyDealsAdapter extends RecyclerView.Adapter<MyDealsAdapter.ViewHold
 
         private int getQuantityIconId(int quantity) {
             switch (quantity) {
-                case 0:
-                    //FIXME put right icon
-                    return R.drawable.ic_attach_money_24dp;
                 case 1:
                     return R.drawable.ic_filter_1_black_24dp;
                 case 2:
