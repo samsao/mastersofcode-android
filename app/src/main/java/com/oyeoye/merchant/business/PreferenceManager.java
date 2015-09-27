@@ -10,6 +10,7 @@ public class PreferenceManager {
     private final static String PREFERENCES_FILE_KEY = "com.oyeoye.merchant.business.PREFERENCE_FILE_KEY";
     public final static String GCM_TOKEN_SENT_TO_SERVER_KEY = "com.oyeoye.merchant.business.GCM_TOKEN_SENT_TO_SERVER_KEY";
     public final static String GCM_TOKEN = "com.oyeoye.merchant.business.GCM_TOKEN";
+    public final static String API_TOKEN = "com.oyeoye.merchant.business.API_TOKEN";
 
     /**
      * Shared preferences
@@ -136,11 +137,19 @@ public class PreferenceManager {
         putBoolean(GCM_TOKEN_SENT_TO_SERVER_KEY, value).apply();
     }
 
-    public boolean setGcmTokenSentToServer() {
+    public boolean getGcmTokenSentToServer() {
         return getBoolean(GCM_TOKEN_SENT_TO_SERVER_KEY, false);
     }
 
     public String getGcmToken() {
         return getString(GCM_TOKEN, null);
+    }
+
+    public void setApiToken(String token) {
+        putString(API_TOKEN, token).apply();
+    }
+
+    public String getApiToken() {
+        return getString(API_TOKEN, null);
     }
 }

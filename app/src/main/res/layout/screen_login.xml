@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/screen_login_toolbar"
+            style="@style/ToolbarStyle"
+            android:background="@android:color/holo_orange_light"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.digits.sdk.android.DigitsAuthButton
+                android:id="@+id/screen_login_auth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
+
+        </FrameLayout>
+    </LinearLayout>
+
+    <com.oyeoye.merchant.presentation.util.LoadingView
+        android:id="@+id/screen_login_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
+</FrameLayout>
