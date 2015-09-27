@@ -25,4 +25,31 @@
         android:text="@string/add_deal_take_picture"
         android:textColor="@android:color/white" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/screen_add_deal_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/add_deal_enter_title" />
+
+        <EditText
+            android:id="@+id/screen_add_deal_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/add_deal_enter_price"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/screen_add_deal_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/add_deal_enter_description" />
+
+    </LinearLayout>
+
 </LinearLayout>

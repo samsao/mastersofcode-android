@@ -6,9 +6,12 @@
         <item>Bought Deals</item>
     </string-array>
 
+    <!--Add Deal-->
     <string name="add_deal">Add a deal</string>
-
     <string name="add_deal_take_picture">Take Picture</string>
     <string name="add_deal_retake_picture">Retake Picture</string>
+    <string name="add_deal_enter_title">Enter Title</string>
+    <string name="add_deal_enter_price">Enter Price</string>
+    <string name="add_deal_enter_description">Enter Description</string>
 
 </resources>
