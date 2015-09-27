@@ -34,7 +34,6 @@ public class MyDealsPresenter extends AbstractPresenter<MyDealsView>  {
 
             @Override
             public void onFailure(Throwable error) {
-                int i = 0;
             }
         });
     }

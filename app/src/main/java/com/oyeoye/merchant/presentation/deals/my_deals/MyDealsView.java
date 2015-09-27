@@ -65,6 +65,7 @@ public class MyDealsView extends PresentedFrameLayout<MyDealsPresenter> implemen
         presenter.fetchDeals();
     }
 
+    // FIXME
     public MyDealsPresenter getPresenter() {
         return presenter;
     }

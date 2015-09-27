@@ -5,7 +5,7 @@
     <item
         android:id="@+id/menu_main_receiver"
         android:title="Receiver"
-        android:visible="true"
+        android:visible="false"
         app:showAsAction="always"/>
 
 </menu>

@@ -50,7 +50,7 @@ public class MainPresenter extends AbstractPresenter<MainView> implements SetupT
         // FIXME because Twitter Digits does not work
         if (!mUserManager.isLoggedIn()) {
             getView().showLoadingView(true);
-            mUserManager.login("5148888888", new ApiCallback<User>() {
+            mUserManager.login("5147188077", new ApiCallback<User>() {
                 @Override
                 public void onSuccess(User user) {
                     Timber.i("logging success");

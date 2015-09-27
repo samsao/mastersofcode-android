@@ -108,6 +108,7 @@ public class MainApplication extends Application {
         public RestAdapter providesRestAdapter(CustomOkClient retrofitClient, final PreferenceManager preferenceManager) {
             return new RestAdapter.Builder()
                     .setClient(retrofitClient)
+                    .setLogLevel(RestAdapter.LogLevel.BASIC)
                     .setEndpoint(Constants.API_HOSTNAME)
                     .setRequestInterceptor(new RequestInterceptor() {
                         @Override
