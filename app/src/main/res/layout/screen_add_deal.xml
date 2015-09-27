@@ -27,7 +27,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@android:color/white"
         android:orientation="vertical">
 
@@ -35,20 +35,43 @@
             android:id="@+id/screen_add_deal_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/add_deal_enter_title" />
+            android:hint="@string/add_deal_enter_title"
+            android:imeOptions="actionNext"
+            android:singleLine="true" />
 
         <EditText
-            android:id="@+id/screen_add_deal_price"
+            android:id="@+id/screen_add_deal_original_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/add_deal_enter_price"
-            android:inputType="number" />
+            android:hint="@string/add_deal_enter_original_price"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:singleLine="true" />
+
+        <EditText
+            android:id="@+id/screen_add_deal_discounted_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/add_deal_enter_discounted_price"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:singleLine="true" />
 
         <EditText
             android:id="@+id/screen_add_deal_description"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/add_deal_enter_description" />
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:hint="@string/add_deal_enter_description"
+            android:imeOptions="actionNext" />
+
+        <Button
+            android:id="@+id/screen_add_deal_broadcast_button"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/take_picture_button"
+            android:text="@string/add_deal_broadcast"
+            android:textColor="@android:color/white" />
 
     </LinearLayout>
 

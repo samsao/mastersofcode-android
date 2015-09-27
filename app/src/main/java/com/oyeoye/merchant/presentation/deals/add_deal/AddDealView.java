@@ -90,6 +90,7 @@ public class AddDealView extends PresentedFrameLayout<AddDealPresenter> {
             @Override
             public void onCameraPreviewReady() {
                 Log.d(LOG_TAG, "Camera is ready to use");
+                mSimpleCamera.setFlashMode(SimpleCamera.FlashMode.AUTO);
                 mTakePictureButton.setEnabled(true);
             }
 
