@@ -18,9 +18,11 @@ public class Deal implements Serializable {
     @JsonProperty("description")
     public String description;
     @JsonProperty("price")
-    public Double price;
+    public Float price;
     @JsonProperty("original_price")
-    public Double originalPrice;
+    public Float originalPrice;
+    @JsonProperty("quantity")
+    public Integer quantity;
     @JsonProperty("image")
     public String image;
 
@@ -40,19 +42,19 @@ public class Deal implements Serializable {
         this.description = description;
     }
 
-    public Double getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 
-    public Double getOriginalPrice() {
+    public Float getOriginalPrice() {
         return originalPrice;
     }
 
-    public void setOriginalPrice(Double originalPrice) {
+    public void setOriginalPrice(Float originalPrice) {
         this.originalPrice = originalPrice;
     }
 
@@ -62,5 +64,13 @@ public class Deal implements Serializable {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 }

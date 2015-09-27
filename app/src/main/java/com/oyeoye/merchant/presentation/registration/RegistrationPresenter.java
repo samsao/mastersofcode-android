@@ -11,16 +11,22 @@ import android.view.MenuItem;
 
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
-import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
 import com.oyeoye.merchant.DaggerScope;
 import com.oyeoye.merchant.RootActivity;
+import com.oyeoye.merchant.business.UserManager;
+import com.oyeoye.merchant.business.api.entity.User;
 import com.oyeoye.merchant.presentation.AbstractPresenter;
 import com.oyeoye.merchant.presentation.RootActivityPresenter;
 import com.oyeoye.merchant.presentation.SetupToolbarHandler;
+import com.oyeoye.merchant.presentation.main.stackable.MainStackable;
 
+import architect.Navigator;
 import architect.robot.AutoStackable;
 import autodagger.AutoComponent;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 import timber.log.Timber;
 
 @AutoStackable(
@@ -33,9 +39,11 @@ public class RegistrationPresenter extends AbstractPresenter<RegistrationView> i
 
     private static final int PLACE_PICKER_REQUEST = 352;
     private final RootActivityPresenter mRootActivityPresenter;
+    private final UserManager mUserManager;
 
-    public RegistrationPresenter(RootActivityPresenter mainActivityPresenter) {
+    public RegistrationPresenter(RootActivityPresenter mainActivityPresenter, UserManager userManager) {
         mRootActivityPresenter = mainActivityPresenter;
+        mUserManager = userManager;
     }
 
     @Override
@@ -70,9 +78,19 @@ public class RegistrationPresenter extends AbstractPresenter<RegistrationView> i
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == PLACE_PICKER_REQUEST) {
             if (resultCode == Activity.RESULT_OK) {
-                Place place = PlacePicker.getPlace(data, getContext());
-                String toastMsg = String.format("Place: %s", place.getName());
-                showToast(toastMsg);
+                mUserManager.updatePlace(PlacePicker.getPlace(data, getContext()), new Callback<User>() {
+                    @Override
+                    public void success(User user, Response response) {
+                        Navigator.get(getView()).push(new MainStackable());
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+                        showToast("Error please retry");
+                    }
+                });
+            } else {
+                showToast("Please select your business");
             }
         }
     }

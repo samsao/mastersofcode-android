@@ -5,6 +5,7 @@ import android.text.TextUtils;
 
 import com.crashlytics.android.Crashlytics;
 import com.digits.sdk.android.Digits;
+import com.oyeoye.merchant.business.DealManager;
 import com.oyeoye.merchant.business.PreferenceManager;
 import com.oyeoye.merchant.business.UserManager;
 import com.oyeoye.merchant.business.api.Constants;
@@ -18,6 +19,7 @@ import com.oyeoye.merchant.business.api.exception.NetworkTimeoutException;
 import com.oyeoye.merchant.business.api.exception.NotFoundException;
 import com.oyeoye.merchant.business.api.exception.RetrofitException;
 import com.oyeoye.merchant.business.api.exception.UnauthorizedException;
+import com.oyeoye.merchant.business.camera.PhotoUtil;
 import com.squareup.okhttp.OkHttpClient;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
 import com.twitter.sdk.android.core.TwitterCore;
@@ -170,6 +172,18 @@ public class MainApplication extends Application {
         @DaggerScope(MainApplication.class)
         public UserManager providesUserManager(PreferenceManager preferenceManager, RestAdapter restAdapter) {
             return new UserManager(preferenceManager, restAdapter);
+        }
+
+        @Provides
+        @DaggerScope(MainApplication.class)
+        public PhotoUtil providesPhotoUtil() {
+            return new PhotoUtil(MainApplication.this);
+        }
+
+        @Provides
+        @DaggerScope(MainApplication.class)
+        public DealManager providesDealManager(RestAdapter restAdapter) {
+            return new DealManager(restAdapter);
         }
     }
 }

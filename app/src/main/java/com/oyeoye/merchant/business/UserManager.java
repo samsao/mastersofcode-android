@@ -2,6 +2,7 @@ package com.oyeoye.merchant.business;
 
 import android.text.TextUtils;
 
+import com.google.android.gms.location.places.Place;
 import com.oyeoye.merchant.business.api.Api;
 import com.oyeoye.merchant.business.api.entity.User;
 
@@ -46,6 +47,10 @@ public class UserManager {
                 callback.failure(error);
             }
         });
+    }
+
+    public void updatePlace(Place place, final Callback<User> callback) {
+        mApiService.updatePlace(place.getId(), place.getName().toString(), callback);
     }
 
     public boolean isLoggedIn() {

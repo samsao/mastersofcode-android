@@ -8,6 +8,7 @@ import android.view.MenuItem;
 
 import com.oyeoye.merchant.AppDependencies;
 import com.oyeoye.merchant.DaggerScope;
+import com.oyeoye.merchant.R;
 import com.oyeoye.merchant.RootActivity;
 import com.oyeoye.merchant.presentation.AbstractPresenter;
 import com.oyeoye.merchant.presentation.RootActivityPresenter;
@@ -40,7 +41,7 @@ public class MainPresenter extends AbstractPresenter<MainView> implements SetupT
     public void setupToolbarMenu(ActionBar actionBar, MenuInflater menuInflater, Menu menu) {
         actionBar.setDisplayHomeAsUpEnabled(false);
         actionBar.setDisplayShowTitleEnabled(true);
-        actionBar.setTitle("TEMPLATE PROJECT");
+        actionBar.setTitle(getString(R.string.app_name));
     }
 
     @Override

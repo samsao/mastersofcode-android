@@ -1,10 +1,12 @@
 package com.oyeoye.merchant.presentation.deals.add_deal;
 
-import android.app.Activity;
+import android.animation.Animator;
+import android.animation.AnimatorSet;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,17 +19,20 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.oyeoye.merchant.R;
+import com.oyeoye.merchant.business.api.entity.Deal;
 import com.oyeoye.merchant.business.camera.SimpleCamera;
 import com.oyeoye.merchant.presentation.base.PresentedFrameLayout;
 import com.oyeoye.merchant.presentation.deals.add_deal.stackable.AddDealStackableComponent;
+import com.oyeoye.merchant.presentation.util.LoadingView;
 
 import architect.robot.DaggerService;
+import architect.view.HandlesViewTransition;
 import autodagger.AutoInjector;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 @AutoInjector(AddDealPresenter.class)
-public class AddDealView extends PresentedFrameLayout<AddDealPresenter> {
+public class AddDealView extends PresentedFrameLayout<AddDealPresenter> implements HandlesViewTransition {
 
     /**
      * Constants
@@ -55,8 +60,9 @@ public class AddDealView extends PresentedFrameLayout<AddDealPresenter> {
     public EditText mDealDescription;
     @Bind(R.id.screen_add_deal_broadcast_button)
     public Button mBroadcastDealButton;
+    @Bind(R.id.screen_add_deal_overlay)
+    public LoadingView mLoadingView;
 
-    private Activity mActivity;
     private SimpleCamera mSimpleCamera;
     private ImageView mDealImageView;
 
@@ -76,8 +82,7 @@ public class AddDealView extends PresentedFrameLayout<AddDealPresenter> {
         presenter.resetMenu(mToolbar);
     }
 
-    public void startCameraPreview(final Activity activity) {
-        mActivity = activity;
+    public void startCameraPreview() {
         if (getWidth() > 0) {
             setupCameraPreview();
         } else {
@@ -118,13 +123,14 @@ public class AddDealView extends PresentedFrameLayout<AddDealPresenter> {
             @Override
             public void onPictureReady(Bitmap bitmap) {
                 mSimpleCamera.release();
+                presenter.saveImage(bitmap);
                 setDealPicture(bitmap);
                 setupRetakePictureButton();
                 mTakePictureButton.setEnabled(true);
             }
         };
 
-        mSimpleCamera = new SimpleCamera.SimpleCameraBuilder(mActivity, mCameraPreviewContainer, simpleCameraCallback)
+        mSimpleCamera = new SimpleCamera.SimpleCameraBuilder(presenter.getActivity(), mCameraPreviewContainer, simpleCameraCallback)
                 .setLayoutMode(SimpleCamera.LayoutMode.CENTER_CROP)
                 .setCamera(SimpleCamera.CameraId.BACK_FACING, false)
                 .createSimpleCamera();
@@ -147,36 +153,79 @@ public class AddDealView extends PresentedFrameLayout<AddDealPresenter> {
         mTakePictureButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                startCameraPreview(mActivity);
+                startCameraPreview();
             }
         });
     }
 
     private void setDealPicture(Bitmap bitmap) {
-        mDealImageView = new ImageView(mActivity);
+        mDealImageView = new ImageView(getContext());
         mDealImageView.setImageBitmap(bitmap);
         mCameraPreviewContainer.addView(mDealImageView);
     }
 
     private void setupBroadcastDealButton() {
+        // TODO replace with validator in the presenter
         mBroadcastDealButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mDealImageView == null) {
-                    Toast.makeText(mActivity, R.string.add_deal_must_take_picture, Toast.LENGTH_LONG).show();
-                } else if (mDealTitle.getText().length() <= 0 ||
-                        mQuantity.getText().length() <= 0 ||
-                        mOriginalPrice.getText().length() <= 0 ||
-                        mDiscountedPrice.getText().length() <= 0 ||
-                        mDealDescription.getText().length() <= 0) {
-                    Toast.makeText(mActivity, R.string.add_deal_fill_all_fields, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), R.string.add_deal_must_take_picture, Toast.LENGTH_LONG).show();
+                } else if (TextUtils.isEmpty(mDealTitle.getText()) ||
+                        TextUtils.isEmpty(mQuantity.getText()) ||
+                        TextUtils.isEmpty(mOriginalPrice.getText()) ||
+                        TextUtils.isEmpty(mDiscountedPrice.getText()) ||
+                        TextUtils.isEmpty(mDealDescription.getText())) {
+                    Toast.makeText(getContext(), R.string.add_deal_fill_all_fields, Toast.LENGTH_LONG).show();
                 } else {
                     mTakePictureButton.setEnabled(false);
                     mBroadcastDealButton.setEnabled(false);
-                    //TODO send au icitte criss
-                    Toast.makeText(mActivity, "TODO : broadcast ton pelvish", Toast.LENGTH_LONG).show();
+                    Deal deal = new Deal();
+                    deal.setTitle(mDealTitle.getText().toString());
+                    deal.setDescription(mDealDescription.getText().toString());
+                    deal.setOriginalPrice(Float.parseFloat(mOriginalPrice.getText().toString()));
+                    deal.setPrice(Float.parseFloat(mDiscountedPrice.getText().toString()));
+                    deal.setQuantity(Integer.parseInt(mQuantity.getText().toString()));
+                    presenter.addDeal(deal);
                 }
             }
         });
+    }
+
+    public void showLoadingView(boolean visible) {
+        if (visible) {
+            mLoadingView.setVisibility(VISIBLE);
+        } else {
+            mLoadingView.setVisibility(GONE);
+        }
+    }
+
+    @Override
+    public void onViewTransition(AnimatorSet animatorSet) {
+        if (animatorSet != null) {
+            animatorSet.addListener(new Animator.AnimatorListener() {
+                @Override
+                public void onAnimationStart(Animator animation) {
+
+                }
+
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    startCameraPreview();
+                }
+
+                @Override
+                public void onAnimationCancel(Animator animation) {
+
+                }
+
+                @Override
+                public void onAnimationRepeat(Animator animation) {
+
+                }
+            });
+        } else {
+            startCameraPreview();
+        }
     }
 }

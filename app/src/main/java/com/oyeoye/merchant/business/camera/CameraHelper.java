@@ -11,9 +11,6 @@ import android.util.Log;
 
 import java.util.List;
 
-/**
- * Created by vlegault on 15-07-03.
- */
 public class CameraHelper {
 
     /**

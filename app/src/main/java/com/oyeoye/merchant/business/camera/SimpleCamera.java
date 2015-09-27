@@ -12,7 +12,6 @@ import android.media.AudioManager;
 import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
-import android.view.MotionEvent;
 import android.view.OrientationEventListener;
 import android.view.ScaleGestureDetector;
 import android.view.Surface;
@@ -24,10 +23,6 @@ import java.io.IOException;
 import java.util.List;
 
 
-/**
- * @author vlegault
- * @since 15-03-17
- */
 public class SimpleCamera extends TextureView implements TextureView.SurfaceTextureListener {
 
     /**
@@ -163,10 +158,10 @@ public class SimpleCamera extends TextureView implements TextureView.SurfaceText
     public void onSurfaceTextureUpdated(SurfaceTexture surfaceTexture) {
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        return mScaleGestureDetector.onTouchEvent(event);
-    }
+//    @Override
+//    public boolean onTouchEvent(MotionEvent event) {
+//        return mScaleGestureDetector.onTouchEvent(event);
+//    }
 
     /**
      * Set in which container to display camera preview.

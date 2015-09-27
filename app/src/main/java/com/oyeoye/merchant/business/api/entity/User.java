@@ -12,8 +12,12 @@ public class User {
     public String id;
     @JsonProperty("phone")
     public String phone;
+    @JsonProperty("gcmId")
+    public String gcmId;
     @JsonProperty("token")
     public String token;
+    @JsonProperty("place")
+    public Place place;
 
     public String getId() {
         return id;
@@ -37,5 +41,21 @@ public class User {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getGcmId() {
+        return gcmId;
+    }
+
+    public void setGcmId(String gcmId) {
+        this.gcmId = gcmId;
+    }
+
+    public Place getPlace() {
+        return place;
+    }
+
+    public void setPlace(Place place) {
+        this.place = place;
     }
 }

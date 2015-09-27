@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Oye Oye Merchant</string>
+    <string name="app_name">Oyez Oyez Merchant</string>
 
     <string-array name="screen_main_tab_titles">
         <item>My Deals</item>

@@ -7,7 +7,6 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/screen_profile_toolbar"
-        android:background="@android:color/holo_orange_light"
         style="@style/ToolbarStyle"/>
 
 </LinearLayout>

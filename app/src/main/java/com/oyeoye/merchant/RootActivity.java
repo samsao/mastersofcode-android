@@ -12,9 +12,11 @@ import android.view.MenuItem;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.places.Places;
+import com.oyeoye.merchant.business.UserManager;
+import com.oyeoye.merchant.business.api.entity.User;
 import com.oyeoye.merchant.presentation.RootActivityPresenter;
 import com.oyeoye.merchant.presentation.deals.add_deal.AddDealView;
-import com.oyeoye.merchant.presentation.login.stackable.LoginStackable;
+import com.oyeoye.merchant.presentation.main.stackable.MainStackable;
 
 import javax.inject.Inject;
 
@@ -33,6 +35,9 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import mortar.MortarScope;
 import mortar.bundler.BundleServiceRunner;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 import timber.log.Timber;
 
 @AutoComponent(
@@ -50,6 +55,9 @@ public class RootActivity extends AppCompatActivity implements RootActivityPrese
     @Inject
     protected RootActivityPresenter mMainActivityPresenter;
 
+    @Inject
+    protected UserManager mUserManager;
+
     @Bind(R.id.navigator_container)
     protected NavigatorView mNavigatorView;
 
@@ -62,7 +70,7 @@ public class RootActivity extends AppCompatActivity implements RootActivityPrese
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_root);
         ButterKnife.bind(this);
@@ -99,7 +107,30 @@ public class RootActivity extends AppCompatActivity implements RootActivityPrese
                 .build();
 
         // it is usually the best to create the mNavigator after everything else
-        mNavigator = ActivityArchitector.onCreateNavigator(this, savedInstanceState, mNavigatorView, new LoginStackable());
+        if (mUserManager.isLoggedIn()) {
+            mNavigator = ActivityArchitector.onCreateNavigator(this, savedInstanceState, mNavigatorView, new MainStackable());
+        } else {
+            // FIXME
+//            mNavigator = ActivityArchitector.onCreateNavigator(this, savedInstanceState, mNavigatorView, new LoginStackable());
+            mNavigator = ActivityArchitector.onCreateNavigator(this, savedInstanceState, mNavigatorView, new MainStackable());
+            mUserManager.login("5148888888", new Callback<User>() {
+                @Override
+                public void success(User user, Response response) {
+                    Timber.i("logging success");
+                    if (user.getPlace() == null) {
+//                        mNavigator = ActivityArchitector.onCreateNavigator(RootActivity.this, savedInstanceState, mNavigatorView, new RegistrationStackable());
+                    } else {
+//                        mNavigator = ActivityArchitector.onCreateNavigator(RootActivity.this, savedInstanceState, mNavigatorView, new MainStackable());
+                    }
+                }
+
+                @Override
+                public void failure(RetrofitError error) {
+                    Timber.e("logging failure");
+//                    mNavigator = ActivityArchitector.onCreateNavigator(RootActivity.this, savedInstanceState, mNavigatorView, new MainStackable());
+                }
+            });
+        }
     }
 
     @Override
