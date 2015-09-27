@@ -5,5 +5,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/screen_bought_deals_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:padding="@dimen/screen_edge"
+        android:scrollbarStyle="outsideOverlay"/>
 
 </LinearLayout>

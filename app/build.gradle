@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'com.google.gms.google-services'
 
 /*
 * Manually set the MAJOR, MINOR and PATCH version components here.
@@ -94,7 +95,9 @@ dependencies {
     def android_support_library_version = '23.0.0'
     def dagger_version = '2.0.1'
     def jackson_version = '2.6.1'
-    def architect_version = '0.15-SNAPSHOT'
+    def architect_version = '0.16-SNAPSHOT'
+    def retrofit_version = '1.9.0'
+    def okhttp_version = '2.4.0'
 
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:' + android_support_library_version
@@ -119,4 +122,10 @@ dependencies {
     apt 'com.hannesdorfmann.parcelableplease:processor:1.0.1'
     compile 'org.parceler:parceler-api:1.0.3'
     apt 'org.parceler:parceler:1.0.3'
+    compile 'com.squareup.retrofit:retrofit:' + retrofit_version
+    compile 'com.squareup.retrofit:converter-jackson:' + retrofit_version
+    compile 'com.squareup.okhttp:okhttp-urlconnection:' + okhttp_version
+    compile 'com.squareup.okhttp:okhttp:' + okhttp_version
+    compile 'com.google.android.gms:play-services-location:8.1.0'
+    compile 'com.google.android.gms:play-services-gcm:8.1.0'
 }

@@ -132,6 +132,10 @@ public abstract class AbstractPresenter<V extends View> extends ViewPresenter<V>
         showToast(resId, Toast.LENGTH_SHORT);
     }
 
+    public void showToast(String string) {
+        showToast(string, Toast.LENGTH_SHORT);
+    }
+
     /**
      * Helper method to show a Toast
      *
@@ -140,5 +144,9 @@ public abstract class AbstractPresenter<V extends View> extends ViewPresenter<V>
      */
     public void showToast(@StringRes int resId, int duration) {
         Toast.makeText(getContext(), resId, duration).show();
+    }
+
+    public void showToast(String string, int duration) {
+        Toast.makeText(getContext(), string, duration).show();
     }
 }
