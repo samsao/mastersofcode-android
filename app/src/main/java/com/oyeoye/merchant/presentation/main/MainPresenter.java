@@ -19,7 +19,9 @@ import com.oyeoye.merchant.presentation.AbstractPresenter;
 import com.oyeoye.merchant.presentation.RootActivityPresenter;
 import com.oyeoye.merchant.presentation.SetupToolbarHandler;
 import com.oyeoye.merchant.presentation.deals.my_deals.MyDealsView;
+import com.oyeoye.merchant.presentation.receiver.stackable.ReceiverStackable;
 
+import architect.Navigator;
 import architect.robot.AutoStackable;
 import autodagger.AutoComponent;
 import autodagger.AutoExpose;
@@ -75,6 +77,7 @@ public class MainPresenter extends AbstractPresenter<MainView> implements SetupT
 
     @Override
     public void setupToolbarMenu(ActionBar actionBar, MenuInflater menuInflater, Menu menu) {
+        menuInflater.inflate(R.menu.menu_main, menu);
         actionBar.setDisplayHomeAsUpEnabled(false);
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setTitle(getString(R.string.app_name));
@@ -82,6 +85,11 @@ public class MainPresenter extends AbstractPresenter<MainView> implements SetupT
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.menu_main_receiver) {
+            Navigator.get(getView().getContext()).push(new ReceiverStackable());
+            return true;
+        }
+
         return false;
     }
 

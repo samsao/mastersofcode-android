@@ -2,6 +2,7 @@ package com.oyeoye.merchant;
 
 import android.content.Context;
 import android.content.Intent;
+import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.view.MenuItem;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.places.Places;
+import com.oyeoye.merchant.business.TransactionNfcManager;
 import com.oyeoye.merchant.business.UserManager;
 import com.oyeoye.merchant.presentation.RootActivityPresenter;
 import com.oyeoye.merchant.presentation.deals.my_deals.MyDealsView;
@@ -53,6 +55,9 @@ public class RootActivity extends AppCompatActivity implements RootActivityPrese
 
     @Inject
     protected UserManager mUserManager;
+
+    @Inject
+    protected TransactionNfcManager mTransactionNfcManager;
 
     @Bind(R.id.navigator_container)
     protected NavigatorView mNavigatorView;
@@ -110,6 +115,8 @@ public class RootActivity extends AppCompatActivity implements RootActivityPrese
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
+        Timber.d("NFC - onNewIntent");
+        setIntent(intent);
         mNavigator.delegate().onNewIntent(intent);
     }
 
@@ -125,6 +132,15 @@ public class RootActivity extends AppCompatActivity implements RootActivityPrese
         super.onStart();
         mNavigator.delegate().onStart();
         mGoogleApiClient.connect();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(getIntent().getAction())) {
+            Timber.d("NFC - onResume");
+            mTransactionNfcManager.receive(getIntent());
+        }
     }
 
     @Override

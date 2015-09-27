@@ -1,6 +1,7 @@
 package com.oyeoye.merchant;
 
 import com.oyeoye.merchant.business.DealManager;
+import com.oyeoye.merchant.business.TransactionNfcManager;
 import com.oyeoye.merchant.business.PreferenceManager;
 import com.oyeoye.merchant.business.UserManager;
 import com.oyeoye.merchant.business.camera.PhotoUtil;
@@ -15,4 +16,5 @@ public interface AppDependencies {
     UserManager userManager();
     PreferenceManager preferenceManager();
     DealManager dealManager();
+    TransactionNfcManager nfcManager();
 }

@@ -48,8 +48,8 @@ import timber.log.Timber;
 public class MainApplication extends Application {
 
     // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
-    private static final String TWITTER_KEY = "LqTwJ2YZrpyHHKWU4J2aRWh3M";
-    private static final String TWITTER_SECRET = "oM0I1NVWyC2ccH6m3bP6eWjze5obpzEdFgc0tW70AY6uXpEPjD";
+    private static final String TWITTER_KEY = "FgHDjfsV6nAWKrY4a16kE3Ddx";
+    private static final String TWITTER_SECRET = "GHYydknprEIAb5hygRzgPcptOChY7mqC8EzDOhzwikxjDFv3Ab";
 
     private MortarScope mScope;
     public static String SCOPE_NAME = "root";
