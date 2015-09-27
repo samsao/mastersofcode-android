@@ -4,11 +4,11 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
-        <item name="colorPrimary">@android:color/holo_green_light</item>
-        <item name="colorPrimaryDark">@android:color/holo_orange_dark</item>
-        <item name="colorAccent">@android:color/holo_purple</item>
-        <item name="colorControlHighlight">@android:color/holo_blue_bright</item>
-        <item name="android:windowBackground">@android:color/holo_red_light</item>
+        <item name="colorPrimary">@color/light_blue</item>
+        <item name="colorPrimaryDark">@color/dark_blue</item>
+        <item name="colorAccent">@color/light_yellow</item>
+        <item name="colorControlHighlight">@color/light_gray</item>
+        <item name="android:windowBackground">@android:color/white</item>
     </style>
 
     <style name="ToolbarStyle">
@@ -22,6 +22,15 @@
     <style name="ToolbarTextStyle">
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">@dimen/font_size_large</item>
+    </style>
+
+    <style name="AppCardView" parent="AppCardViewBase"/>
+
+    <style name="AppCardViewBase">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="cardCornerRadius">@dimen/corner_radius</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
     </style>
 
 </resources>

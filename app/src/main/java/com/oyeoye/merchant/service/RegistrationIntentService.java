@@ -33,7 +33,6 @@ public class RegistrationIntentService extends IntentService {
                 String token = instanceID.getToken(getString(R.string.gcm_defaultSenderId),
                         GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
                 sharedPreferences.edit().putString(PreferenceManager.GCM_TOKEN, token).apply();
-                Timber.i("GCM Registration Token: " + token);
                 sharedPreferences.edit().putBoolean(PreferenceManager.GCM_TOKEN_SENT_TO_SERVER_KEY, true).apply();
             }
         } catch (Exception e) {
