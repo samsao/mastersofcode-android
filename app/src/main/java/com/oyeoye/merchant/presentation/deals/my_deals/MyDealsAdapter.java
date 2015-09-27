@@ -87,9 +87,9 @@ public class MyDealsAdapter extends RecyclerView.Adapter<MyDealsAdapter.ViewHold
             mDiscountPercentage.setText(Integer.toString((int) (100.0 - (deal.getPrice() / deal.getOriginalPrice()) * 100.0)) + "% off");
             mDealTitle.setText(deal.getTitle());
             mDealDescription.setText(deal.getDescription());
-            mDealPrice.setText(new DecimalFormat("#.00").format(deal.getPrice()));
+            mDealPrice.setText("$" + new DecimalFormat("#.00").format(deal.getPrice()));
             mDealQuantityIcon.setImageDrawable(mContext.getResources().getDrawable(getQuantityIconId(deal.getQuantity())));
-            mDealQuantity.setText(deal.getQuantity().toString());
+            mDealQuantity.setText(deal.getQuantity().toString() + " left");
 
             mItemView.setOnClickListener(new View.OnClickListener() {
                 @Override

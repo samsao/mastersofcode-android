@@ -36,7 +36,7 @@ public class MainPresenter extends AbstractPresenter<MainView> implements SetupT
     }
 
     public void resetMenu(Toolbar toolbar) {
-        mRootActivityPresenter.setupToolbar(getView().mToolbar);
+        mRootActivityPresenter.setupToolbar(toolbar);
         mRootActivityPresenter.resetMenu(this);
     }
 
