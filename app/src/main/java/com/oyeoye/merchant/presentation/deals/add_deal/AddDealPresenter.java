@@ -1,5 +1,6 @@
 package com.oyeoye.merchant.presentation.deals.add_deal;
 
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -29,6 +30,11 @@ public class AddDealPresenter extends AbstractPresenter<AddDealView> implements 
 
     public AddDealPresenter(RootActivityPresenter mainActivityPresenter) {
         mRootActivityPresenter = mainActivityPresenter;
+    }
+
+    @Override
+    protected void onLoad(Bundle savedInstanceState) {
+        getView().startCameraPreview(mRootActivityPresenter.getActivity());
     }
 
     public void resetMenu(Toolbar toolbar) {

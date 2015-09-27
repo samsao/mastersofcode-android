@@ -14,7 +14,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.places.Places;
 import com.oyeoye.merchant.presentation.RootActivityPresenter;
 import com.oyeoye.merchant.presentation.deals.add_deal.AddDealView;
-import com.oyeoye.merchant.presentation.main.stackable.MainStackable;
+import com.oyeoye.merchant.presentation.deals.add_deal.stackable.AddDealStackable;
 
 import javax.inject.Inject;
 
@@ -99,7 +99,7 @@ public class RootActivity extends AppCompatActivity implements RootActivityPrese
                 .build();
 
         // it is usually the best to create the mNavigator after everything else
-        mNavigator = ActivityArchitector.onCreateNavigator(this, savedInstanceState, mNavigatorView, new MainStackable());
+        mNavigator = ActivityArchitector.onCreateNavigator(this, savedInstanceState, mNavigatorView, new AddDealStackable());
     }
 
     @Override
@@ -164,7 +164,7 @@ public class RootActivity extends AppCompatActivity implements RootActivityPrese
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-         mMainActivityPresenter.onActivityResult(requestCode, resultCode, data);
+        mMainActivityPresenter.onActivityResult(requestCode, resultCode, data);
     }
 
     /**
