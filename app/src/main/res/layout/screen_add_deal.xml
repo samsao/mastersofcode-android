@@ -7,8 +7,7 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/screen_add_deal_toolbar"
-        style="@style/ToolbarStyle"
-        android:background="@android:color/holo_orange_light" />
+        style="@style/ToolbarStyle" />
 
     <FrameLayout
         android:id="@+id/screen_add_deal_camera_preview_container"

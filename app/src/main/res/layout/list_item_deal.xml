@@ -106,9 +106,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingLeft="@dimen/spacing"
-            android:paddingRight="@dimen/spacing"
-            android:paddingTop="@dimen/spacing">
+            android:padding="@dimen/spacing">
 
             <ImageView
                 android:id="@+id/list_item_deal_quantity_icon"
@@ -125,6 +123,14 @@
                 android:textSize="@dimen/font_size_medium" />
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/list_item_deal_buy_button"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/take_picture_button"
+            android:text="BUY NOW"
+            android:textColor="@android:color/white" />
 
     </LinearLayout>
 

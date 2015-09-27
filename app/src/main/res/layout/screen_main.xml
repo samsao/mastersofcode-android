@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/screen_main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,17 +7,17 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/screen_main_toolbar"
-        style="@style/ToolbarStyle"
-        android:background="@android:color/holo_orange_light"/>
+        style="@style/ToolbarStyle" />
 
     <android.support.design.widget.TabLayout
         android:id="@+id/screen_main_tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"/>
+        android:layout_height="?attr/actionBarSize"
+        style="@style/CustomTabLayout" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/screen_main_viewpager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 </LinearLayout>
