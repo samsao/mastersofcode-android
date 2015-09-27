@@ -45,6 +45,8 @@ public class AddDealView extends PresentedFrameLayout<AddDealPresenter> {
     public Button mTakePictureButton;
     @Bind(R.id.screen_add_deal_title)
     public EditText mDealTitle;
+    @Bind(R.id.screen_add_deal_quantity)
+    public EditText mQuantity;
     @Bind(R.id.screen_add_deal_original_price)
     public EditText mOriginalPrice;
     @Bind(R.id.screen_add_deal_discounted_price)
@@ -163,6 +165,7 @@ public class AddDealView extends PresentedFrameLayout<AddDealPresenter> {
                 if (mDealImageView == null) {
                     Toast.makeText(mActivity, R.string.add_deal_must_take_picture, Toast.LENGTH_LONG).show();
                 } else if (mDealTitle.getText().length() <= 0 ||
+                        mQuantity.getText().length() <= 0 ||
                         mOriginalPrice.getText().length() <= 0 ||
                         mDiscountedPrice.getText().length() <= 0 ||
                         mDealDescription.getText().length() <= 0) {

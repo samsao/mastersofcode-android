@@ -40,6 +40,15 @@
             android:singleLine="true" />
 
         <EditText
+            android:id="@+id/screen_add_deal_quantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/add_deal_enter_quantity"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:singleLine="true" />
+
+        <EditText
             android:id="@+id/screen_add_deal_original_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
