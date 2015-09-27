@@ -1,6 +1,7 @@
 package com.oyeoye.merchant.business.api;
 
 import com.oyeoye.merchant.business.api.entity.Deal;
+import com.oyeoye.merchant.business.api.entity.Transaction;
 import com.oyeoye.merchant.business.api.entity.User;
 
 import java.util.List;
@@ -40,4 +41,7 @@ public interface Api {
 
     @GET("/merchant/deal")
     void getDeals(Callback<List<Deal>> callback);
+
+    @GET("/merchant/transaction")
+    void getTransactions(Callback<List<Transaction>> callback);
 }

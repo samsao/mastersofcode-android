@@ -9,8 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.oyeoye.merchant.R;
+import com.oyeoye.merchant.business.api.entity.Transaction;
 import com.oyeoye.merchant.presentation.base.PresentedFrameLayout;
 import com.oyeoye.merchant.presentation.deals.bought_deals.stackable.BoughtDealsStackableComponent;
+
+import java.util.List;
 
 import architect.robot.DaggerService;
 import autodagger.AutoInjector;
@@ -56,5 +59,10 @@ public class BoughtDealsView extends PresentedFrameLayout<BoughtDealsPresenter> 
             }
         });
         mRecyclerView.setAdapter(mAdapter);
+        presenter.fetchDeals();
+    }
+
+    public void setDeals(List<Transaction> deals) {
+        mAdapter.setList(deals);
     }
 }

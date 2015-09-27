@@ -13,6 +13,8 @@ import java.io.Serializable;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Deal implements Serializable {
+    @JsonProperty("_id")
+    public String id;
     @JsonProperty("title")
     public String title;
     @JsonProperty("description")
@@ -25,6 +27,14 @@ public class Deal implements Serializable {
     public Integer quantity;
     @JsonProperty("image")
     public String image;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
