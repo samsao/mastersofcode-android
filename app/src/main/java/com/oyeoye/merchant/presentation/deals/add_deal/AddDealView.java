@@ -74,32 +74,21 @@ public class AddDealView extends PresentedFrameLayout<AddDealPresenter> implemen
         ButterKnife.bind(view);
         setLayoutParams(new LinearLayoutCompat.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         setupBroadcastDealButton();
+        getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                mCameraPreviewContainer.setLayoutParams(new LinearLayout.LayoutParams(
+                        LayoutParams.MATCH_PARENT,
+                        (int) (CAMERA_PREVIEW_ASPECT_RATIO * getWidth())));
+            }
+        });
     }
 
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
         presenter.resetMenu(mToolbar);
-    }
-
-    public void startCameraPreview() {
-        if (getWidth() > 0) {
-            setupCameraPreview();
-        } else {
-            getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                @Override
-                public void onGlobalLayout() {
-                    getViewTreeObserver().removeOnGlobalLayoutListener(this);
-
-                    mCameraPreviewContainer.setLayoutParams(new LinearLayout.LayoutParams(
-                            LayoutParams.MATCH_PARENT,
-                            (int) (CAMERA_PREVIEW_ASPECT_RATIO * getWidth())));
-
-                    setupCameraPreview();
-                }
-            });
-        }
-
     }
 
     private void setupCameraPreview() {
@@ -153,7 +142,7 @@ public class AddDealView extends PresentedFrameLayout<AddDealPresenter> implemen
         mTakePictureButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                startCameraPreview();
+                setupCameraPreview();
             }
         });
     }
@@ -211,7 +200,7 @@ public class AddDealView extends PresentedFrameLayout<AddDealPresenter> implemen
 
                 @Override
                 public void onAnimationEnd(Animator animation) {
-                    startCameraPreview();
+                    setupCameraPreview();
                 }
 
                 @Override
@@ -225,7 +214,7 @@ public class AddDealView extends PresentedFrameLayout<AddDealPresenter> implemen
                 }
             });
         } else {
-            startCameraPreview();
+            setupCameraPreview();
         }
     }
 }

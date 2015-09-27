@@ -28,6 +28,6 @@ public interface Api {
                  @Part("originalPrice") Float originalPrice,
                  @Part("price") Float price,
                  @Part("quantity") Integer quantity,
-                 @Part("image") TypedFile image,
+                 @Part("imageFile") TypedFile image,
                  Callback<Deal> callback);
 }
