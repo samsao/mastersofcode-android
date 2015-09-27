@@ -6,6 +6,14 @@
         <item>Bought Deals</item>
     </string-array>
 
+    <!--Registration-->
+    <string name="registration_welcome">Welcome aboard,</string>
+    <string name="registration_description">we only need to get your business address and we\'ll take care of the rest</string>
+    <string name="registration_pick_place">Select your business</string>
+
+    <!--My Deals-->
+    <string name="my_deals_edit">Edit Deal</string>
+
     <!--Add Deal-->
     <string name="add_deal">Add a deal</string>
     <string name="add_deal_take_picture">TAKE PICTURE</string>

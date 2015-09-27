@@ -1,17 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="@color/light_blue"
+    android:padding="@dimen/screen_edge">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/screen_registration_toolbar"
-        style="@style/ToolbarStyle" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/registration_welcome"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_size_extra_large" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:paddingBottom="@dimen/quadruple_spacing"
+            android:paddingTop="@dimen/quadruple_spacing"
+            android:text="@string/registration_description"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_size_large" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/store_searchicon" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/screen_registration_pick_a_place_btn"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Pick a place" />
+        android:layout_gravity="bottom"
+        android:background="@color/dark_blue"
+        android:text="@string/registration_pick_place"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/font_size_large" />
 
-</LinearLayout>
+</FrameLayout>
